@@ -21,7 +21,7 @@ RUN bundle install --binstubs
 
 COPY . .
 
-RUN bundle exec rake RAILS_ENV=production rails db:migrate
+RUN bundle exec RAILS_ENV=production rails db:migrate 
 
 RUN bundle exec rake RAILS_ENV=production SECRET_TOKEN=dummytoken assets:precompile
 
