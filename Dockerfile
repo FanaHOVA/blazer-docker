@@ -21,7 +21,9 @@ RUN bundle install --binstubs
 
 COPY . .
 
-RUN bundle exec rake RAILS_ENV=production DATABASE_URL=postgresql://user:pass@127.0.0.1/dbname SECRET_TOKEN=dummytoken assets:precompile
+RUN bundle exec rake RAILS_ENV=production rails db:migrate
+
+RUN bundle exec rake RAILS_ENV=production SECRET_TOKEN=dummytoken assets:precompile
 
 ENV PORT 8080
 
